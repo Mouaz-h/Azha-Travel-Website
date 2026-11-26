@@ -5,194 +5,510 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Azha Travel - Student Transportation</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="WhatsApp Image 2026-11-26 at 13.18.23.jpeg" alt="Azha Travel Logo" class="logo-img">
-      <span>Azha Travel</span>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#reserve">Reserve Trip</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="auth-btn">
-      <button id="adminSigninBtn">Admin Sign In</button>
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="WhatsApp Image 2026-11-26 at 13.18.23.jpeg" alt="Azha Travel Logo" class="logo-img">
+        <span>Azha Travel</span>
+      </div>
+      <nav class="nav">
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#routes" class="nav-link">Routes</a></li>
+          <li><a href="#book" class="nav-link">Book Now</a></li>
+          <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <section id="hero">
-    <div class="hero-content">
-      <h1>Azha Travel</h1>
-      <p>Safe and reliable student transportation across Egypt</p>
-      <a href="#reserve" class="btn">Reserve Your Trip</a>
-    </div>
-  </section>
-
-  <main>
-    <section id="about" class="section">
-      <div class="container">
-        <h2><i class="fas fa-info-circle"></i> About Azha Travel</h2>
-        <div class="about-content">
-          <div class="about-text">
-            <p>Azha Travel is a trusted transportation company providing safe and reliable travel services for students across Egypt. We specialize in transporting students from Suez to various universities and destinations, ensuring comfortable and punctual journeys.</p>
-            <p>Our routes cover major universities including:</p>
-            <ul>
-              <li>Galala University</li>
-              <li>Badr University</li>
-              <li>Russian University</li>
-              <li>And other universities in Egypt</li>
-            </ul>
-            <p>We operate daily from 5pm to 9pm, providing convenient transportation options for students after their classes.</p>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Safe Student Travel<br>Across Egypt</h1>
+        <p>From Suez to universities nationwide. Book your ride in minutes with Azha Travel.</p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">10,000</span>
+            <span class="stat-label">Students Served</span>
           </div>
-          <div class="about-image">
-            <i class="fas fa-bus-large"></i>
+          <div class="stat-item">
+            <span class="stat-number">4.8</span>
+            <span class="stat-label">Rating</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">Support</span>
           </div>
         </div>
       </div>
-    </section>
-
-    <section id="admin" class="section" style="background: #fff; margin-top: 2rem; padding: 2rem; border-top: 4px solid #e74c3c;">
-      <div class="container">
-        <h2><i class="fas fa-lock"></i> Admin Sign In</h2>
-        <p>Enter admin credentials to access the reservation data sheet</p>
-        <form id="adminForm">
+      <div class="booking-card">
+        <h3>Book Your Trip</h3>
+        <form id="bookingForm" class="booking-form">
           <div class="form-group">
-            <label>Admin Password</label>
-            <input type="password" id="adminPassword" required placeholder="Enter admin password">
+            <label for="from">From</label>
+            <select id="from" required>
+              <option value="" disabled selected>Select location</option>
+              <option value="suez">Suez City Center</option>
+              <option value="university-city">University City</option>
+              <option value="downtown">Downtown Suez</option>
+            </select>
           </div>
-          <button type="submit" class="btn">Sign In</button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <section id="contact" class="section" style="background: #f5f5f5;">
-
-    <section class="bus-showcase">
-      <img src="WhatsApp Image 2026-11-16 at 19.30.36.jpeg" alt="Azha Bus">
-    </section>
-
-    <section id="services" class="section" style="background: #f5f5f5;">
-      <div class="container">
-        <h2><i class="fas fa-bus"></i> Our Services</h2>
-        <div class="bus-accent"></div>
-        <div class="services-grid">
-          <div class="service-card">
-            <i class="fas fa-train"></i>
-            <h3>University Routes</h3>
-            <p>Regular transportation to major Egyptian universities</p>
-          </div>
-          <div class="service-card">
-            <i class="fas fa-clock"></i>
-            <h3>Fixed Schedule</h3>
-            <p>Operating hours: 5pm - 9pm daily</p>
-          </div>
-          <div class="service-card">
-            <i class="fas fa-user-friends"></i>
-            <h3>Student Focused</h3>
-            <p>Services designed specifically for student needs</p>
-          </div>
-          <div class="service-card">
-            <i class="fas fa-map"></i>
-            <h3>Multiple Routes</h3>
-            <p>Various tracks and pickup points available</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="reserve" class="section" style="background: #fff;">
-      <div class="container">
-        <h2><i class="fas fa-calendar"></i> Reserve Your Trip</h2>
-        <p class="reservation-hours">🌟 Reservation hours: 5pm - 9pm daily</p>
-
-        <form id="reservationForm">
           <div class="form-group">
-            <label for="university">University</label>
-            <select id="university" required>
-              <option value="" disabled selected>Select your university</option>
+            <label for="to">To</label>
+            <select id="to" required>
+              <option value="" disabled selected>Select university</option>
               <option value="galala">Galala University</option>
               <option value="badr">Badr University</option>
               <option value="russian">Russian University</option>
               <option value="suez">Suez University</option>
             </select>
           </div>
-
           <div class="form-group">
-            <label for="studentName">Student Name</label>
-            <input type="text" id="studentName" required placeholder="Enter your full name">
+            <label for="date">Date</label>
+            <input type="date" id="date" required>
           </div>
-
           <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" required placeholder="Enter your phone number">
+            <label for="students">Students</label>
+            <input type="number" id="students" min="1" value="1" required>
           </div>
-
-          <div class="form-group">
-            <label for="payment">Payment Type</label>
-            <select id="payment" required>
-              <option value="" disabled selected>Select payment type</option>
-              <option value="instapay">Instapay Transfer</option>
-              <option value="wallet">Wallet</option>
-              <option value="cash">Cash in Bus</option>
-              <option value="subscribed">Already Subscribed (Semester Paid)</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="track">Track</label>
-            <select id="track">
-              <option value="" disabled selected>Select track first</option>
-              <option value="track-a">Track A</option>
-              <option value="track-b">Track B</option>
-            </select>
-          </div>
-
-          <div class="form-group" id="pickupPointGroup" style="display: none;">
-            <label for="pickupPoint">Pickup Point</label>
-            <select id="pickupPoint" required>
-              <option value="" disabled selected>Select pickup point</option>
-            </select>
-          </div>
-
-          <button type="submit" class="btn">Submit Reservation</button>
+          <button type="submit" class="btn-primary">Search Buses</button>
         </form>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <section id="contact" class="section" style="background: #f5f5f5;">
+  <section id="popular-routes" class="routes-section">
     <div class="container">
-      <h2><i class="fas fa-phone"></i> Contact Us</h2>
-      <div class="contact-info">
-        <div class="contact-item">
-          <i class="fas fa-phone"></i>
-          <div>
-            <h3>Phone Numbers</h3>
-            <p>+20 123 456 7890</p>
-            <p>+20 123 456 7891</p>
+      <div class="section-header">
+        <h2>Popular Student Routes</h2>
+        <p>Most frequently booked routes by our students</p>
+      </div>
+      <div class="routes-grid">
+        <div class="route-card">
+          <div class="route-image">
+            <img src="WhatsApp Image 2026-11-16 at 19.30.36.jpeg" alt="Bus to Galala University">
+            <div class="route-badge">Most Popular</div>
+          </div>
+          <div class="route-content">
+            <h3>Suez → Galala University</h3>
+            <div class="route-details">
+              <div class="detail-item">
+                <i class="fas fa-clock"></i>
+                <span>45 min journey</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-dollar-sign"></i>
+                <span>150 EGP per trip</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-users"></i>
+                <span>250+ students</span>
+              </div>
+            </div>
+            <button class="btn-secondary">View Schedule</button>
           </div>
         </div>
-        <div class="contact-item">
-          <i class="fab fa-instagram"></i>
-          <div>
-            <h3>Instagram</h3>
-            <p>@azha.travel</p>
+
+        <div class="route-card">
+          <div class="route-image">
+            <img src="WhatsApp Image 2026-11-16 at 19.30.36.jpeg" alt="Bus to Badr University">
+          </div>
+          <div class="route-content">
+            <h3>Suez → Badr University</h3>
+            <div class="route-details">
+              <div class="detail-item">
+                <i class="fas fa-clock"></i>
+                <span>30 min journey</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-dollar-sign"></i>
+                <span>120 EGP per trip</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-users"></i>
+                <span>180+ students</span>
+              </div>
+            </div>
+            <button class="btn-secondary">View Schedule</button>
+          </div>
+        </div>
+
+        <div class="route-card">
+          <div class="route-image">
+            <img src="WhatsApp Image 2026-11-16 at 19.30.36.jpeg" alt="Bus to Russian University">
+            </div>
+          <div class="route-content">
+            <h3>Suez → Russian University</h3>
+            <div class="route-details">
+              <div class="detail-item">
+                <i class="fas fa-clock"></i>
+                <span>50 min journey</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-dollar-sign"></i>
+                <span>180 EGP per trip</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-users"></i>
+                <span>120+ students</span>
+              </div>
+            </div>
+            <button class="btn-secondary">View Schedule</button>
+          </div>
+        </div>
+
+        <div class="route-card">
+          <div class="route-image">
+            <img src="WhatsApp Image 2026-11-16 at 19.30.36.jpeg" alt="Bus to Suez University">
+          </div>
+          <div class="route-content">
+            <h3>Suez → Suez University</h3>
+            <div class="route-details">
+              <div class="detail-item">
+                <i class="fas fa-clock"></i>
+                <span>20 min journey</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-dollar-sign"></i>
+                <span>80 EGP per trip</span>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-users"></i>
+                <span>300+ students</span>
+              </div>
+            </div>
+            <button class="btn-secondary">View Schedule</button>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <footer>
+  <section id="how-it-works" class="how-it-works-section">
     <div class="container">
-      <p>&copy; 2026 Azha Travel. All rights reserved.</p>
-      <p>Safe travel for Egyptian students</p>
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p>Booking your student transport is simple and easy</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="step-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3>Search Routes</h3>
+          <p>Find your route from Suez to any university using our simple search tool</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="step-icon">
+            <i class="fas fa-calendar"></i>
+          </div>
+          <h3>Choose Schedule</h3>
+          <p>Select your travel date and time that fits your university schedule</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="step-icon">
+            <i class="fas fa-ticket-alt"></i>
+          </div>
+          <h3>Book & Pay</h3>
+          <p>Complete your booking and pay securely with multiple payment options</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <div class="step-icon">
+            <i class="fas fa-bus"></i>
+          </div>
+          <h3>Travel</h3>
+          <p>Meet your driver at the pickup point and enjoy a comfortable journey</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>What Students Say</h2>
+        <p>Join thousands of satisfied students using Azha Travel</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Azha Travel made my life so much easier! I can now travel to Galala University comfortably after my evening classes. The buses are punctual and the staff is very helpful."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>Mohamed Ali</h4>
+              <p>Galala University Student</p>
+              <p class="author-university">Faculty of Engineering</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="testimonial-text">"I've been using Azha Travel for 6 months now. The subscription plan is perfect for my budget, and I never miss a class. The buses are clean and air-conditioned."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>Nouran Hassan</h4>
+              <p>Computer Science Student</p>
+              <p class="author-university">Suez University</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="testimonial-text">"The subscription option is brilliant! I pay once per semester and travel all I want. The route tracking system lets me know exactly when the bus is arriving."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="author-info">
+              <h4>Karim Mostafa</h4>
+              <p>Business Administration Student</p>
+              <p class="author-university">Badr University</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>Why Choose Azha Travel?</h2>
+          <p>We're dedicated to providing safe, reliable, and affordable transportation solutions for students across Egypt. Our mission is to make university education accessible by solving the transportation challenge.</p>
+
+          <div class="about-features">
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <div class="feature-content">
+                <h4>Safe & Secure</h4>
+                <p>Professional drivers and well-maintained vehicles</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="feature-content">
+                <h4>24/7 Support</h4>
+                <p>Customer support available around the clock</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-tags"></i>
+              </div>
+              <div class="feature-content">
+                <h4>Best Prices</h4>
+                <p>Competitive rates and flexible payment options</p>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon">
+                <i class="fas fa-route"></i>
+              </div>
+              <div class="feature-content">
+                <h4>Multiple Routes</h4>
+                <p>Covers all major universities from Suez</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-image">
+          <img src="WhatsApp Image 2026-11-16 at 19.30.36.jpeg" alt="Azha Travel Bus">
+          <div class="experience-badge">
+            <span class="years">10</span>
+            <span class="label">Years of Service</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Contact Us</h2>
+        <p>Get in touch with our team for any questions or support</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Our Location</h3>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Main Office</h4>
+              <p>Suez, Egypt</p>
+              <p>Al-Ghardaia District</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Phone Numbers</h4>
+              <p>+20 122 345 6789</p>
+              <p>+20 123 456 7890</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <div class="contact-details">
+              <h4>WhatsApp</h4>
+              <p>@azha_travel_official</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Email</h4>
+              <p>info@azhatravel.com</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <h3>Send Us a Message</h3>
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contactName">Name</label>
+                <input type="text" id="contactName" required placeholder="Your full name">
+              </div>
+              <div class="form-group">
+                <label for="contactEmail">Email</label>
+                <input type="email" id="contactEmail" required placeholder="your@email.com">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="contactSubject">Subject</label>
+              <input type="text" id="contactSubject" required placeholder="How can we help?">
+            </div>
+            <div class="form-group">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" rows="4" required placeholder="Your message here..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <img src="WhatsApp Image 2026-11-26 at 13.18.23.jpeg" alt="Azha Travel Logo" class="logo-img">
+            <span>Azha Travel</span>
+          </div>
+          <p>Safe student transportation across Egypt since 2014.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#routes">Popular Routes</a></li>
+            <li><a href="#book">Book Now</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Payment Options</h4>
+          <ul>
+            <li>Instapay Transfer</li>
+            <li>Wallet Balance</li>
+            <li>Cash in Bus</li>
+            <li>Semester Subscription</li>
+            <li>University Installments</li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Download App</h4>
+          <p>Get our mobile app for easier booking</p>
+          <div class="app-buttons">
+            <button class="app-btn">
+              <i class="fab fa-google-play"></i>
+              <span>Google Play</span>
+            </button>
+            <button class="app-btn">
+              <i class="fab fa-app-store"></i>
+              <span>App Store</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Azha Travel. All rights reserved. Safe travel for Egyptian students.</p>
+      </div>
     </div>
   </footer>
 

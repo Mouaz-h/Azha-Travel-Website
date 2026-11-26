@@ -1,267 +1,200 @@
-document.getElementById('reservationForm').addEventListener('submit', function(e) {
-  e.preventDefault();
+document.addEventListener('DOMContentLoaded', function() {
+  // Mobile menu toggle
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  const navLinks = document.querySelector('.nav-links');
 
-  const university = document.getElementById('university').value;
-  const studentName = document.getElementById('studentName').value;
-  const phone = document.getElementById('phone').value;
-  const payment = document.getElementById('payment').value;
-  const track = document.getElementById('track').value;
-  const pickupPoint = document.getElementById('pickupPoint').value;
-
-  // Basic validation
-  if (!university || !studentName || !phone || !payment || !track || !pickupPoint) {
-    alert('Please fill in all required fields.');
-    return;
-  }
-
-  // Show success message
-  alert('Reservation submitted successfully!\n\n' +
-    'University: ' + university + '\n' +
-    'Student Name: ' + studentName + '\n' +
-    'Phone: ' + phone + '\n' +
-    'Payment Type: ' + payment + '\n' +
-    'Track: ' + track + '\n' +
-    'Pickup Point: ' + pickupPoint);
-
-  // In a real app, this data would be sent to a server or saved to a spreadsheet
-  console.log('Reservation data:', {
-    university, studentName, phone, payment, track, pickupPoint
-  });
-});
-
-// Track selection enables pickup point selection
-document.getElementById('track').addEventListener('change', function() {
-  const pickupPointGroup = document.getElementById('pickupPointGroup');
-  if (this.value) {
-    pickupPointGroup.style.display = 'block';
-  } else {
-    pickupPointGroup.style.display = 'none';
-  }
-});
-
-// Initialize pickup points based on track (sample data)
-const pickupPoints = {
-  'track-a': ['Suez Station', 'Downtown', 'University City'],
-  'track-b': ['Galala Gate', 'New Suez', 'City Center']
-};
-
-document.getElementById('track').addEventListener('change', function() {
-  const pickupPointSelect = document.getElementById('pickupPoint');
-  pickupPointSelect.innerHTML = '<option value="" disabled selected>Select pickup point</option>';
-
-  if (this.value && pickupPoints[this.value]) {
-    pickupPoints[this.value].forEach(point => {
-      const option = document.createElement('option');
-      option.value = point;
-      option.textContent = point;
-      pickupPointSelect.appendChild(option);
-    });
-    document.getElementById('pickupPointGroup').style.display = 'block';
-  } else {
-    document.getElementById('pickupPointGroup').style.display = 'none';
-  }
-});
-
-// Admin sign-in functionality
-const ADMIN_PASSWORD = 'azha2026-admin';
-
-document.getElementById('adminForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const password = document.getElementById('adminPassword').value;
-
-  if (password === ADMIN_PASSWORD) {
-    showAdminSheet();
-  } else {
-    alert('Incorrect admin password. Please try again.');
-    document.getElementById('adminPassword').focus();
-  }
-});
-
-// Admin sign-in button click
-document.getElementById('adminSigninBtn').addEventListener('click', function() {
-  document.getElementById('adminPassword').focus();
-});
-
-// Show admin data sheet
-function showAdminSheet() {
-  const adminSection = document.getElementById('admin');
-  adminSection.style.display = 'block';
-
-  // Hide the sign-in button and show signed-in state
-  document.getElementById('adminSigninBtn').style.display = 'none';
-
-  // Create the data sheet if not already created
-  createAdminSheet();
-}
-
-// Create the admin data sheet
-function createAdminSheet() {
-  const container = document.querySelector('#admin .container');
-
-  // Sample existing reservation data
-  const existingData = [
-    { student: 'Ahmed Hassan', university: 'Galala', pickup: 'Suez Station', status: 'Morning: Picked Up', returnStatus: 'Return: Not Returned', notes: 'First trip' },
-    { student: 'Maryam Salah', university: 'Badr', pickup: 'Downtown', status: 'Morning: Picked Up', returnStatus: 'Return: Not Returned', notes: 'Subscribed student' },
-    { student: 'Mohamed Ali', university: 'Russian', pickup: 'Galala Gate', status: 'Morning: Picked Up', returnStatus: 'Return: Not Returned', notes: 'New student' }
-  ];
-
-  const html = `
-    <div class="admin-header">
-      <h3>Reservation Data Sheet</h3>
-      <button class="btn-small" onclick="window.print()">Print</button>
-      <button class="btn-small" onclick="exportToCSV()">Export CSV</button>
-    </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Student Name</th>
-          <th>University</th>
-          <th>Track</th>
-          <th>Pickup Point</th>
-          <th>Morning Status</th>
-          <th>Return Status</th>
-          <th>Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-  `;
-
-  existingData.forEach(row => {
-    html += `
-      <tr>
-        <td>${row.student}</td>
-        <td>${row.university}</td>
-        <td></td>
-        <td>${row.pickup}</td>
-        <td>${row.status}</td>
-        <td>${row.returnStatus}</td>
-        <td>${row.notes}</td>
-      </tr>
-    `;
-  });
-
-  html += `
-      </tbody>
-    </table>
-    <h4>Add New Entry</h4>
-    <form id="addEntryForm">
-      <div class="form-group">
-        <input type="text" id="newStudent" placeholder="Student name" required>
-      </div>
-      <div class="form-group">
-        <select id="newUniversity" required>
-        <option value="" disabled selected>University</option>
-        <option value="galala">Galala University</option>
-        <option value="badr">Badr University</option>
-        <option value="russian">Russian University</option>
-        <option value="suez">Suez University</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <select id="newTrack" required>
-        <option value="" disabled selected>Track</option>
-        <option value="track-a">Track A</option>
-        <option value="track-b">Track B</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <select id="newPickup" required>
-        <option value="" disabled selected>Pickup Point</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <input type="text" id="newStatus" placeholder="Morning status (e.g., Picked Up)" required>
-      </div>
-      <div class="form-group">
-        <input type="text" id="newReturnStatus" placeholder="Return status (e.g., Not Returned)" required>
-      </div>
-      <div class="form-group">
-        <input type="text" id="newNotes" placeholder="Notes">
-      </div>
-      <button type="submit" class="btn">Add Entry</button>
-    </form>
-  `;
-
-  container.innerHTML = html;
-
-  // Setup pickup points based on track selection
-  const pickupPoints = {
-    'track-a': ['Suez Station', 'Downtown', 'University City'],
-    'track-b': ['Galala Gate', 'New Suez', 'City Center']
-  };
-
-  const newTrackSelect = document.getElementById('newTrack');
-  const newPickupSelect = document.getElementById('newPickup');
-
-  newTrackSelect.addEventListener('change', function() {
-    newPickupSelect.innerHTML = '<option value="" disabled selected>Pickup Point</option>';
-    if (this.value && pickupPoints[this.value]) {
-      pickupPoints[this.value].forEach(point => {
-        const option = document.createElement('option');
-        option.value = point;
-        option.textContent = point;
-        newPickupSelect.appendChild(option);
-      });
-    }
-  });
-
-  // Handle adding new entry
-  document.getElementById('addEntryForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const newStudent = document.getElementById('newStudent').value;
-    const newUniversity = document.getElementById('newUniversity').value;
-    const newTrack = document.getElementById('newTrack').value;
-    const newPickup = document.getElementById('newPickup').value;
-    const newStatus = document.getElementById('newStatus').value;
-    const newReturnStatus = document.getElementById('newReturnStatus').value;
-    const newNotes = document.getElementById('newNotes').value;
-
-    if (newStudent && newUniversity && newTrack && newPickup && newStatus && newReturnStatus) {
-      const newRow = [
-        newStudent, newUniversity, newTrack, newPickup,
-        `Morning: ${newStatus}`, `Return: ${newReturnStatus}`, newNotes || '-'
-      ];
-
-      const tbody = container.querySelector('tbody');
-      const tr = document.createElement('tr');
-      newRow.forEach(cellData => {
-        const td = document.createElement('td');
-        td.textContent = cellData;
-        tr.appendChild(td);
-      });
-      tbody.appendChild(tr);
-
-      // Clear form
-      document.getElementById('addEntryForm').reset();
-      newPickupSelect.innerHTML = '<option value="" disabled selected>Pickup Point</option>';
-
-      alert('New reservation entry added successfully!');
+  mobileMenuBtn.addEventListener('click', function() {
+    navLinks.classList.toggle('active');
+    const icon = this.querySelector('i');
+    if (navLinks.classList.contains('active')) {
+      icon.classList.remove('fa-bars');
+      icon.classList.add('fa-times');
     } else {
-      alert('Please fill in all required fields.');
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
     }
   });
 
-  // CSV Export function
-  window.exportToCSV = function() {
-    const rows = container.querySelectorAll('tbody tr');
-    let csv = 'Student Name,University,Track,Pickup Point,Morning Status,Return Status,Notes\n';
+  // Close mobile menu when clicking on a link
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function() {
+      navLinks.classList.remove('active');
+      const icon = mobileMenuBtn.querySelector('i');
+      icon.classList.remove('fa-times');
+      icon.classList.add('fa-bars');
+    });
+  });
 
-    rows.forEach(row => {
-      const cells = row.querySelectorAll('td');
-      const cellData = Array.from(cells).map(cell => {
-        return `"${cell.textContent.replace(/"/g, '""')}"`;
-      });
-      csv += cellData.join(',') + '\n';
+  // Header scroll effect
+  const header = document.querySelector('.header');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 100) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  // Booking form submission
+  const bookingForm = document.getElementById('bookingForm');
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const from = document.getElementById('from').value;
+      const to = document.getElementById('to').value;
+      const date = document.getElementById('date').value;
+      const students = document.getElementById('students').value;
+
+      if (!from || !to || !date) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+
+      // In a real app, this data would be sent to a server
+      const bookingData = {
+        from,
+        to,
+        date,
+        students,
+        timestamp: new Date().toISOString()
+      };
+
+      console.log('Booking submitted:', bookingData);
+
+      // Show success message
+      alert('Booking request submitted successfully!\n\n' +
+        'From: ' + from + '\n' +
+        'To: ' + to + '\n' +
+        'Date: ' + date + '\n' +
+        'Students: ' + students + '\n\n' +
+        'Our team will contact you shortly with available schedules.');
+
+      // Reset form
+      bookingForm.reset();
+    });
+  }
+
+  // Contact form submission
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('contactName').value;
+      const email = document.getElementById('contactEmail').value;
+      const subject = document.getElementById('contactSubject').value;
+      const message = document.getElementById('contactMessage').value;
+
+      if (!name || !email || !subject || !message) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+
+      // Email validation
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+      // In a real app, this data would be sent via API
+      const contactData = {
+        name,
+        email,
+        subject,
+        message,
+        timestamp: new Date().toISOString()
+      };
+
+      console.log('Contact message submitted:', contactData);
+
+      // Show success message
+      alert('Message sent successfully!\n\nThank you for contacting Azha Travel. We will get back to you within 24 hours.');
+
+      // Reset form
+      contactForm.reset();
+    });
+  }
+
+  // Route card click handlers
+  document.querySelectorAll('.route-card, .step-card, .testimonial-card').forEach(card => {
+    card.addEventListener('click', function() {
+      // Add visual feedback
+      this.style.transform = 'scale(0.98)';
+      setTimeout(() => {
+        this.style.transform = '';
+      }, 150);
+    });
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        const headerHeight = document.querySelector('.header').offsetHeight;
+        const targetPosition = targetElement.offsetTop - headerHeight;
+
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+  // Add fade-in animation to elements
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  // Observe elements for animation
+  document.querySelectorAll('.route-card, .step-card, .testimonial-card, .about-text, .about-image, .contact-info, .contact-form').forEach(element => {
+    observer.observe(element);
+  });
+
+  // Auto-set today's date for booking form
+  const dateInput = document.getElementById('date');
+  if (dateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.min = today;
+    dateInput.value = today;
+  }
+
+  // Navigation active state
+  window.addEventListener('scroll', function() {
+    let current = '';
+    const sections = document.querySelectorAll('section[id]');
+    const scrollPosition = window.pageYOffset + 150;
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        current = section.getAttribute('id');
+      }
     });
 
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.setAttribute('href', url);
-    link.setAttribute('download', 'azha-reservations.csv');
-    link.style.visibility = 'hidden';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-}
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.classList.remove('active');
+      if (current && link.getAttribute('href').includes(current)) {
+        link.classList.add('active');
+      }
+    });
+  });
+});

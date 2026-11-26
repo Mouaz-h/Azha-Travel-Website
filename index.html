@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azha Travel - Student Transportation</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/minimize.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <i class="fas fa-bus"></i> Azha Travel
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#reserve">Reserve Trip</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="auth-btn">
+      <button id="adminSigninBtn">Admin Sign In</button>
+    </div>
+  </header>
+
+  <section id="hero">
+    <div class="hero-content">
+      <h1>Azha Travel</h1>
+      <p>Safe and reliable student transportation across Egypt</p>
+      <a href="#reserve" class="btn">Reserve Your Trip</a>
+    </div>
+  </section>
+
+  <main>
+    <section id="about" class="section">
+      <div class="container">
+        <h2><i class="fas fa-info-circle"></i> About Azha Travel</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>Azha Travel is a trusted transportation company providing safe and reliable travel services for students across Egypt. We specialize in transporting students from Suez to various universities and destinations, ensuring comfortable and punctual journeys.</p>
+            <p>Our routes cover major universities including:</p>
+            <ul>
+              <li>Galala University</li>
+              <li>Badr University</li>
+              <li>Russian University</li>
+              <li>And other universities in Egypt</li>
+            </ul>
+            <p>We operate daily from 5pm to 9pm, providing convenient transportation options for students after their classes.</p>
+          </div>
+          <div class="about-image">
+            <i class="fas fa-bus-large"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="section" style="background: #f5f5f5;">
+      <div class="container">
+        <h2><i class="fas fa-bus"></i> Our Services</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <i class="fas fa-train"></i>
+            <h3>University Routes</h3>
+            <p>Regular transportation to major Egyptian universities</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-clock"></i>
+            <h3>Fixed Schedule</h3>
+            <p>Operating hours: 5pm - 9pm daily</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-user-friends"></i>
+            <h3>Student Focused</h3>
+            <p>Services designed specifically for student needs</p>
+          </div>
+          <div class="service-card">
+            <i class="fas fa-map"></i>
+            <h3>Multiple Routes</h3>
+            <p>Various tracks and pickup points available</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reserve" class="section" style="background: #fff;">
+      <div class="container">
+        <h2><i class="fas fa-calendar"></i> Reserve Your Trip</h2>
+        <p class="reservation-hours">🌟 Reservation hours: 5pm - 9pm daily</p>
+
+        <form id="reservationForm">
+          <div class="form-group">
+            <label for="university">University</label>
+            <select id="university" required>
+              <option value="" disabled selected>Select your university</option>
+              <option value="galala">Galala University</option>
+              <option value="badr">Badr University</option>
+              <option value="russian">Russian University</option>
+              <option value="suez">Suez University</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="studentName">Student Name</label>
+            <input type="text" id="studentName" required placeholder="Enter your full name">
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" required placeholder="Enter your phone number">
+          </div>
+
+          <div class="form-group">
+            <label for="payment">Payment Type</label>
+            <select id="payment" required>
+              <option value="" disabled selected>Select payment type</option>
+              <option value="instapay">Instapay Transfer</option>
+              <option value="wallet">Wallet</option>
+              <option value="cash">Cash in Bus</option>
+              <option value="subscribed">Already Subscribed (Semester Paid)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="track">Track</label>
+            <select id="track">
+              <option value="" disabled selected>Select track first</option>
+              <option value="track-a">Track A</option>
+              <option value="track-b">Track B</option>
+            </select>
+          </div>
+
+          <div class="form-group" id="pickupPointGroup" style="display: none;">
+            <label for="pickupPoint">Pickup Point</label>
+            <select id="pickupPoint" required>
+              <option value="" disabled selected>Select pickup point</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn">Submit Reservation</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="admin" class="section" style="background: #fff; margin-top: 2rem; padding: 2rem; border-top: 4px solid #e74c3c;">
+      <div class="container">
+        <h2><i class="fas fa-lock"></i> Admin Sign In</h2>
+        <p>Enter admin credentials to access the reservation data sheet</p>
+        <form id="adminForm">
+          <div class="form-group">
+            <label>Admin Password</label>
+            <input type="password" id="adminPassword" required placeholder="Enter admin password">
+          </div>
+          <button type="submit" class="btn">Sign In</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <section id="contact" class="section" style="background: #f5f5f5;">
+    <div class="container">
+      <h2><i class="fas fa-phone"></i> Contact Us</h2>
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <div>
+            <h3>Phone Numbers</h3>
+            <p>+20 123 456 7890</p>
+            <p>+20 123 456 7891</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-instagram"></i>
+          <div>
+            <h3>Instagram</h3>
+            <p>@azha.travel</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Azha Travel. All rights reserved.</p>
+      <p>Safe travel for Egyptian students</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
